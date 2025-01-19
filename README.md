@@ -18,6 +18,26 @@
  * Please look up Variables.h for an in-depth description of setup parameters.
  *
 
+  Programming info:
+  Some people reported issues when compiling on a Mac ArduinoIDE environment.
+  We will add detailed description of required compiler flags soon.
+  
+  Using only standard flags can produce a working build but it can have a lot of timing issues and dropouts...
+  
+  So for people that only want to program the MCU and build it, the binaries have been uploaded.
+  
+  Easiest to use usbasp (clone) programmer and AVRdude and optional AVRdudess for a nice interface.
+  Flags need to be set aswell before programming, to use the pcb mount 8Mhz resonator for more precision,
+  The internal RC oscillator is not very good. 
+  L 0xFF
+  H 0xDA
+  E 0xFD
+  
+  avrdude.exe -c usbasp(-clone) -p m328p -U lfuse:w:0xFF:m -U hfuse:w:0xDA:m -U efuse:w:0xFD:m
+  For newer arduino pro mini clones, m328p must be changed to m328pb.
+  The pb version is newer and fully backwards compatible.
+__________________________________________________________________________________________________
+
 ************************************************************************
 * ONLY FOR ARDUINO PRO MINI 3.3V 8Mhz Atmega 328P(B)                   *
 * AND 3x TM1638 PERIPHERAL MODULES                                     *
